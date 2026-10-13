@@ -765,6 +765,9 @@ Create a script `weeks/week1/task11.py` that generates `x` values on a fixed ran
 
 **Example output:**
 
+> [!NOTE]
+> This output is an **example**. It was generated with the seed `42` but even if you do not set a seed or use another one, I'll still treat your solution as a valid one!
+
 ```bash
 python run.py -w 1 -t 11
 ```
