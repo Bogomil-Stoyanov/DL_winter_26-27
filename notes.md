@@ -983,7 +983,7 @@ $$
 z = \frac{x - \mu}{\sigma}
 $$
 
-where \(\mu\) is the mean and \(\sigma\) is the standard deviation.
+where $\mu$ is the mean and $\sigma$ is the standard deviation.
 
 </details>
 
@@ -1286,7 +1286,7 @@ $0$
 
 **Description:**
 
-Given four true values and four predictions, work out the error, the absolute error, and the squared error for each pair, then their means. For each example \(i\), define the signed, absolute, and squared errors as
+Given four true values and four predictions, work out the error, the absolute error, and the squared error for each pair, then their means. For each example $i$, define the signed, absolute, and squared errors as
 
 $$
 e_i = \hat{y}_i - y_i,
@@ -1419,7 +1419,7 @@ $$
 <details>
 <summary>What is the gradient vector?</summary>
 
-The loss \(L\) is one scalar, but \(\hat{y}\) contains four predictions. Therefore, the derivative with respect to \(\hat{y}\) is a gradient containing four partial derivatives:
+The loss $L$ is one scalar, but $\hat{y}$ contains four predictions. Therefore, the derivative with respect to $\hat{y}$ is a gradient containing four partial derivatives:
 
 $$
 \nabla_{\hat{y}}L
@@ -1454,7 +1454,7 @@ $$
 \right].
 $$
 
-The factor \(1/4\) is constant, so it can be moved outside the derivative:
+The factor $1/4$ is constant, so it can be moved outside the derivative:
 
 $$
 \frac{\partial L}{\partial \hat{y}_1}
@@ -1468,7 +1468,7 @@ $$
 \right).
 $$
 
-Now differentiate term by term. Only the first term contains \(\hat{y}_1\). The other predictions are independent coordinates, so their terms are constants with respect to \(\hat{y}_1\):
+Now differentiate term by term. Only the first term contains $\hat{y}_1$. The other predictions are independent coordinates, so their terms are constants with respect to $\hat{y}_1$:
 
 $$
 \frac{\partial L}{\partial \hat{y}_1}
@@ -1479,7 +1479,7 @@ $$
 \right].
 $$
 
-For a scalar \(x\),
+For a scalar $x$,
 
 $$
 \frac{d}{dx}|x|
@@ -1497,7 +1497,7 @@ $$
 $$
 
 > [!NOTE]
-> At \(x=0\) there is no actual derivative. Like most libraries, we'll consider the derivative $0$ when \(x=0\).
+> At $x=0$ there is no actual derivative. Like most libraries, we'll consider the derivative $0$ when $x=0$.
 
 Therefore,
 
@@ -1527,7 +1527,7 @@ $$
 <details>
 <summary>So what is the general pattern?</summary>
 
-For any component \(\hat{y}_i\), all terms in the sum except term \(i\) have derivative zero with respect to that component. Therefore,
+For any component $\hat{y}_i$, all terms in the sum except term $i$ have derivative zero with respect to that component. Therefore,
 
 $$
 \boxed{
@@ -1550,7 +1550,7 @@ $$
 
 where the sign function is applied elementwise.
 
-At an exact prediction, \(\hat{y}_i=y_i\), MAE has a corner. Its subgradient for that component is any value in \([-1/N,1/N]\); automatic-differentiation systems conventionally use \(0\).
+At an exact prediction, $\hat{y}_i=y_i$, MAE has a corner. Its subgradient for that component is any value in $[-1/N,1/N]$; automatic-differentiation systems conventionally use $0$.
 
 </details>
 
@@ -1652,7 +1652,7 @@ $$
 \right].
 $$
 
-Move the constant \(1/4\) outside and differentiate term by term:
+Move the constant $1/4$ outside and differentiate term by term:
 
 $$
 \frac{\partial L}{\partial \hat{y}_1}
@@ -1663,7 +1663,7 @@ $$
 \right].
 $$
 
-The last three derivatives are zero because those terms do not contain \(\hat{y}_1\).
+The last three derivatives are zero because those terms do not contain $\hat{y}_1$.
 
 Therefore,
 
@@ -1672,7 +1672,7 @@ $$
 = \frac{1}{4}\,2(\hat{y}_1-y_1).
 $$
 
-Using \(\hat{y}_1=2\) and \(y_1=3\),
+Using $\hat{y}_1=2$ and $y_1=3$,
 
 $$
 \boxed{
@@ -1687,7 +1687,7 @@ $$
 <details>
 <summary>So what is the general pattern?</summary>
 
-For a batch of \(N\) examples,
+For a batch of $N$ examples,
 
 $$
 \boxed{
@@ -1696,7 +1696,7 @@ $$
 }.
 $$
 
-Unlike MAE, the gradient magnitude grows with the size of the error. In the outlier example, replacing the fourth prediction by \(100\) makes its residual \(100-9=91\), so that one gradient component becomes
+Unlike MAE, the gradient magnitude grows with the size of the error. In the outlier example, replacing the fourth prediction by $100$ makes its residual $100-9=91$, so that one gradient component becomes
 
 $$
 \frac{2}{4}(91)=45.5.
@@ -1842,7 +1842,7 @@ $$
 \frac{2}{N}(\hat{y}_1-y_1).
 $$
 
-The factors of \(2\) cancel:
+The factors of $2$ cancel:
 
 $$
 \frac{\partial L}{\partial \hat{y}_1}
@@ -1894,7 +1894,7 @@ Different thresholds can produce very different predictions from the exact same 
 
 Define **`apply_threshold`** in `dl_lib.metrics.functional`. Takes an array of probabilities and a threshold; returns a same-shaped array of `0`/`1` predictions, `1` where the probability is at or above the threshold.
 
-For probability \(p_i\) and threshold \(\tau\),
+For probability $p_i$ and threshold $\tau$,
 
 $$
 \hat{y}_i
@@ -2128,7 +2128,7 @@ Never! It has a hidden bias when the dataset is imbalanced (which is usually the
 
 **Description:**
 
-Let's now compare how precision and recall behave under different thresholds. At threshold \(\tau\), the predictions and metrics can be written as
+Let's now compare how precision and recall behave under different thresholds. At threshold $\tau$, the predictions and metrics can be written as
 
 $$
 \hat{y}_i(\tau)=\mathbb{1}[p_i\ge\tau],
@@ -2207,7 +2207,7 @@ Output range: [0.000045, 0.999955]
 
 **Step 1: Start from the sigmoid definition.**
 
-For one scalar input \(x\),
+For one scalar input $x$,
 
 $$
 \sigma(x)
@@ -2241,7 +2241,7 @@ $$
 \frac{d}{du}u^{-1}=-u^{-2}.
 $$
 
-Now derive the inner function. The derivative of the constant \(1\) is \(0\). For \(e^{-x}\), apply the chain rule:
+Now derive the inner function. The derivative of the constant $1$ is $0$. For $e^{-x}$, apply the chain rule:
 
 $$
 \frac{d}{dx}e^{-x}
@@ -2264,7 +2264,7 @@ $$
 = \left[-u^{-2}\right]\left[-e^{-x}\right].
 $$
 
-Substitute \(u=1+e^{-x}\):
+Substitute $u=1+e^{-x}$:
 
 $$
 \frac{d\sigma}{dx}
@@ -2307,7 +2307,7 @@ $$
 
 **Step 5: Evaluate the derivative at the task's sample inputs.**
 
-At \(x=0\),
+At $x=0$,
 
 $$
 \sigma(0)=\frac{1}{2},
@@ -2322,7 +2322,7 @@ $$
 =0.25.
 $$
 
-At \(x=10\), \(\sigma(10)\approx0.9999546\), so
+At $x=10$, $\sigma(10)\approx0.9999546$, so
 
 $$
 \sigma'(10)
@@ -2331,10 +2331,10 @@ $$
 \approx0.0000454.
 $$
 
-At \(x=-10\), the derivative has the same small magnitude.
+At $x=-10$, the derivative has the same small magnitude.
 
 > [!WARNING]
-> The derivative is largest at \(x=0\) and **approaches \(0\) for inputs with large positive or negative magnitude**. Those saturated inputs therefore pass only a small gradient backward.
+> The derivative is largest at $x=0$ and **approaches $0$ for inputs with large positive or negative magnitude**. Those saturated inputs therefore pass only a small gradient backward.
 
 </details>
 
@@ -2433,7 +2433,7 @@ $$
 
 **Step 1: Start from the exponential definition.**
 
-For one scalar input \(x\),
+For one scalar input $x$,
 
 $$
 \tanh(x)
@@ -2462,7 +2462,7 @@ $$
 \tanh(x)=\frac{u(x)}{v(x)}.
 $$
 
-**Step 3: Differentiate \(u\) and \(v\).**
+**Step 3: Differentiate $u$ and $v$.**
 
 First,
 
@@ -2470,7 +2470,7 @@ $$
 \frac{d}{dx}e^x=e^x.
 $$
 
-For \(e^{-x}\), the chain rule gives
+For $e^{-x}$, the chain rule gives
 
 $$
 \frac{d}{dx}e^{-x}
@@ -2504,7 +2504,7 @@ $$
 = \frac{u'v-uv'}{v^2}.
 $$
 
-Substitute \(u'=v\) and \(v'=u\):
+Substitute $u'=v$ and $v'=u$:
 
 $$
 \frac{d}{dx}\tanh(x)
@@ -2520,7 +2520,7 @@ $$
 = 1-\left(\frac{u}{v}\right)^2.
 $$
 
-Since \(u/v=\tanh(x)\),
+Since $u/v=\tanh(x)$,
 
 $$
 \boxed{
@@ -2547,7 +2547,7 @@ Sigmoid answers "is this one thing true," which is enough for binary classificat
 
 Define **`softmax`** in `dl_lib.activations.functional`. Takes an array; returns a same-shaped array of probabilities that sum to `1` along the last axis, computed in the numerically stable way: subtracting the maximum value before exponentiating, which is mathematically identical to the plain formula but never overflows.
 
-For logits \(z_1,\ldots,z_C\), the probability of class \(i\) is
+For logits $z_1,\ldots,z_C$, the probability of class $i$ is
 
 $$
 p_i
@@ -2785,7 +2785,7 @@ This is the approach used in the upcoming `categorical_cross_entropy` task: the 
 
 Define the following functions in `dl_lib.losses.functional`:
 
-- **`binary_cross_entropy`**: cross-entropy for binary true labels and predicted probabilities. It takes true labels containing `0` or `1` and predicted probabilities \(p\). Clip the probabilities away from exactly \(0\) and \(1\),
+- **`binary_cross_entropy`**: cross-entropy for binary true labels and predicted probabilities. It takes true labels containing `0` or `1` and predicted probabilities $p$. Clip the probabilities away from exactly $0$ and $1$,
 
   $$
   \tilde p=\operatorname{clip}(p,\varepsilon,1-\varepsilon),
@@ -2799,7 +2799,7 @@ Define the following functions in `dl_lib.losses.functional`:
 
   For each example, select the probability assigned to its true class, take its negative logarithm, and return the mean across the batch. Apply the same clipping before taking the logarithm.
 
-For binary labels \(y_i\in\{0,1\}\) and predicted probabilities \(p_i\), let
+For binary labels $y_i\in\{0,1\}$ and predicted probabilities $p_i$, let
 
 $$
 \tilde p_i=\operatorname{clip}(p_i,\varepsilon,1-\varepsilon).
@@ -2820,9 +2820,9 @@ $$
 
 For multiclass classification, let:
 
-- \(t_n\in\{0,\ldots,C-1\}\) be the integer index of the true class for example \(n\);
-- \(p_{n,c}\) be the predicted probability that example \(n\) belongs to class \(c\);
-- \(\tilde p_{n,c}\) be the clipped predicted probability.
+- $t_n\in\{0,\ldots,C-1\}$ be the integer index of the true class for example $n$;
+- $p_{n,c}$ be the predicted probability that example $n$ belongs to class $c$;
+- $\tilde p_{n,c}$ be the clipped predicted probability.
 
 The categorical cross-entropy is
 
@@ -2838,7 +2838,7 @@ In other words, categorical cross-entropy selects one probability from each rowâ
 Create a script `weeks/week2/task13.py` that:
 
 1. Computes `binary_cross_entropy` on a small example.
-2. Compares the binary loss for a confidently right prediction, \(p=0.999\), against a confidently wrong prediction, \(p=0.001\), using the same true label.
+2. Compares the binary loss for a confidently right prediction, $p=0.999$, against a confidently wrong prediction, $p=0.001$, using the same true label.
 3. Computes `categorical_cross_entropy` on a small multiclass example.
 4. Compares the categorical loss for a confidently right prediction against a confidently wrong prediction using the same true class.
 
@@ -2902,7 +2902,7 @@ y_true=0, p_true=0.001 (confidently wrong): loss=6.9078
 
 **Step 1: Start from the complete mean loss.**
 
-For binary targets \(y_i\in\{0,1\}\) and predicted probabilities \(p_i\),
+For binary targets $y_i\in\{0,1\}$ and predicted probabilities $p_i$,
 
 $$
 L
@@ -2915,11 +2915,11 @@ y_j\log p_j
 \right].
 $$
 
-We first derive the gradient with respect to the probabilities \(p\), then continue through sigmoid to the logits \(z\).
+We first derive the gradient with respect to the probabilities $p$, then continue through sigmoid to the logits $z$.
 
 **Step 2: Differentiate the full sum with respect to one probability.**
 
-Take one probability \(p_i\). Begin with the full sum:
+Take one probability $p_i$. Begin with the full sum:
 
 $$
 \frac{\partial L}{\partial p_i}
@@ -2933,7 +2933,7 @@ y_j\log p_j
 \right].
 $$
 
-Only the term with \(j=i\) contains \(p_i\). Every other term has derivative zero with respect to \(p_i\). Therefore,
+Only the term with $j=i$ contains $p_i$. Every other term has derivative zero with respect to $p_i$. Therefore,
 
 $$
 \frac{\partial L}{\partial p_i}
@@ -2948,7 +2948,7 @@ $$
 
 **Step 3: Differentiate the two logarithmic terms.**
 
-Because \(y_i\) is constant,
+Because $y_i$ is constant,
 
 $$
 \frac{\partial}{\partial p_i}
@@ -3057,7 +3057,7 @@ p_i(1-p_i)
 \right].
 $$
 
-The \(p_i(1-p_i)\) factors cancel:
+The $p_i(1-p_i)$ factors cancel:
 
 $$
 \boxed{
@@ -3074,7 +3074,7 @@ $$
 
 **Step 1: Start from categorical cross-entropy using class indices.**
 
-For \(N\) examples, let \(t_n\) be the integer index of the true class for example \(n\). If \(p_{n,c}\) is the predicted probability for class \(c\), the mean categorical cross-entropy is
+For $N$ examples, let $t_n$ be the integer index of the true class for example $n$. If $p_{n,c}$ is the predicted probability for class $c$, the mean categorical cross-entropy is
 
 $$
 L
@@ -3083,7 +3083,7 @@ L
 \log p_{n,t_n}.
 $$
 
-For one example \(n\), its contribution to the mean loss is
+For one example $n$, its contribution to the mean loss is
 
 $$
 L_n
@@ -3112,7 +3112,7 @@ $$
 }.
 $$
 
-For any incorrect class \(c\ne t_n\), the probability \(p_{n,c}\) does not appear directly in the loss. Therefore,
+For any incorrect class $c\ne t_n$, the probability $p_{n,c}$ does not appear directly in the loss. Therefore,
 
 $$
 \boxed{
@@ -3152,9 +3152,9 @@ p_{n,c}
 {\sum_{j=1}^{C}e^{z_{n,j}}}.
 $$
 
-Although categorical cross-entropy directly selects only \(p_{n,t_n}\), that probability depends on every logit in the row.
+Although categorical cross-entropy directly selects only $p_{n,t_n}$, that probability depends on every logit in the row.
 
-For one logit \(z_{n,k}\), apply the chain rule:
+For one logit $z_{n,k}$, apply the chain rule:
 
 $$
 \frac{\partial L}{\partial z_{n,k}}
@@ -3172,7 +3172,7 @@ $$
 \right).
 $$
 
-Set \(c=t_n\):
+Set $c=t_n$:
 
 $$
 \frac{\partial p_{n,t_n}}{\partial z_{n,k}}
@@ -3195,7 +3195,7 @@ p_{n,t_n}
 \right).
 $$
 
-The \(p_{n,t_n}\) terms cancel:
+The $p_{n,t_n}$ terms cancel:
 
 $$
 \frac{\partial L}{\partial z_{n,k}}
